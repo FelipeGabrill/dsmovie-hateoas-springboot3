@@ -51,7 +51,7 @@ HTTP/1.1 200 OK
 - Quando utilizar e quando não utilizar HATEOAS, depende...
     - Necessário avaliar a relação custo/benefício para cada projeto
     
-- Para implementar o HATEOAS nas nossas APIs vamos usar o Spring HATEOAS (https://spring.io/projects/spring-hateoas)
+- Para implementar o HATEOAS nas nossas APIs foi usado o Spring HATEOAS (https://spring.io/projects/spring-hateoas)
 
 ### Passo: Dependência Maven
 
