@@ -12,6 +12,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.devsuperior.dsmovie.controllers.MovieController;
 import com.devsuperior.dsmovie.dto.MovieDTO;
 import com.devsuperior.dsmovie.entities.Movie;
 import com.devsuperior.dsmovie.repositories.MovieRepository;
@@ -29,7 +30,9 @@ public class MovieService {
 	@Transactional(readOnly = true)
 	public Page<MovieDTO> findAll(Pageable pageable) {
 		Page<Movie> result = repository.findAll(pageable);
-		Page<MovieDTO> page = result.map(x -> new MovieDTO(x));
+		Page<MovieDTO> page = result.map(x -> new MovieDTO(x)
+				.add(linkTo(methodOn(MovieController.class).findAll(null)).withSelfRel())
+				.add(linkTo(methodOn(MovieController.class).findById(x.getId())).withRel("Get movie by id")));
 		return page;
 	}
 
